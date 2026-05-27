@@ -1,5 +1,9 @@
 # ast-grep-mcp
 
+[![CI](https://github.com/user/ast-grep-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/user/ast-grep-mcp/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/ast-grep-mcp.svg)](https://www.npmjs.com/package/ast-grep-mcp)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Standalone MCP server wrapping [ast-grep](https://ast-grep.github.io/) for AI-optimized AST code search and replace across 26 languages.
 
 Extracted from [oh-my-opencode](https://github.com/code-yeongyu/oh-my-openagent).

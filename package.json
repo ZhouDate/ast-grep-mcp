@@ -16,7 +16,7 @@
     "code-replace",
     "ai-tools"
   ],
-  "author": "",
+  "author": "yeongyu",
   "bin": {
     "ast-grep-mcp": "dist/cli.js"
   },
