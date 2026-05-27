@@ -20,9 +20,10 @@ export async function collectProcessOutputWithTimeout(
 	const stdoutPromise = process.stdout ? new Response(process.stdout).text() : Promise.resolve("")
 	const stderrPromise = process.stderr ? new Response(process.stderr).text() : Promise.resolve("")
 
-	const stdout = await Promise.race([stdoutPromise, timeoutPromise])
-	const stderr = await stderrPromise
-	const exitCode = await process.exited
+	const [stdout, stderr, exitCode] = await Promise.race([
+		Promise.all([stdoutPromise, stderrPromise, process.exited]),
+		timeoutPromise
+	])
 
 	return { stdout, stderr, exitCode }
 }

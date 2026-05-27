@@ -17,7 +17,7 @@ export { ensureCliAvailable, getAstGrepPath, isCliAvailable, startBackgroundInit
 const SG_BINARY_NOT_FOUND_MESSAGE =
 	`ast-grep (sg) binary not found.\n\n` +
 	`Install options:\n` +
-	`  bun add -D @ast-grep/cli\n` +
+	`  npm install -D @ast-grep/cli\n` +
 	`  cargo install ast-grep --locked\n` +
 	`  brew install ast-grep`
 

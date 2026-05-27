@@ -43,7 +43,7 @@ export function createSgResultFromStdout(stdout: string): SgResult {
 
 	return {
 		matches: finalMatches,
-		totalMatches,
+		totalMatches: outputTruncated ? -1 : totalMatches,
 		truncated: outputTruncated || matchesTruncated,
 		truncatedReason: outputTruncated
 			? "max_output_bytes"

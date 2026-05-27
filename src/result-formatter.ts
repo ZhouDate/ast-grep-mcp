@@ -20,7 +20,12 @@ export function formatSearchResult(result: SgResult): string {
     lines.push(`[TRUNCATED] Results truncated (${reason})\n`)
   }
 
-  lines.push(`Found ${result.matches.length} match(es)${result.truncated ? ` (truncated from ${result.totalMatches})` : ""}:\n`)
+  const totalSuffix = result.truncated
+    ? result.totalMatches < 0
+      ? " (truncated, total unknown)"
+      : ` (truncated from ${result.totalMatches})`
+    : ""
+  lines.push(`Found ${result.matches.length} match(es)${totalSuffix}:\n`)
 
   for (const match of result.matches) {
     const loc = `${match.file}:${match.range.start.line + 1}:${match.range.start.column + 1}`

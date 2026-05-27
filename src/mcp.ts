@@ -100,6 +100,7 @@ const AST_GREP_MCP_TOOLS = [
 
 export async function handleAstGrepMcpRequest(input: unknown, options: AstGrepMcpOptions = {}): Promise<JsonRpcResponse | undefined> {
   if (!isRecord(input)) return errorResponse(null, -32600, "Invalid Request");
+  if (input.jsonrpc !== "2.0") return errorResponse(null, -32600, "Invalid Request: missing or wrong jsonrpc version");
   const id = jsonRpcId(input.id);
   if (input.method === "notifications/initialized") return undefined;
   if (input.method === "ping") return successResponse(id, {});
