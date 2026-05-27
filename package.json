@@ -1,5 +1,5 @@
 {
-  "name": "ast-grep-mcp",
+  "name": "@chousyn/ast-grep-mcp",
   "version": "0.1.0",
   "type": "module",
   "description": "Standalone ast-grep MCP server for AI-optimized AST code search and replace across 26 languages",
@@ -19,9 +19,13 @@
   "author": "yeongyu",
   "files": ["dist"],
   "bin": {
-    "ast-grep-mcp": "dist/cli.js"
+    "ast-grep-mcp": "dist/cli.js",
+    "@chousyn/ast-grep-mcp": "dist/cli.js"
   },
   "main": "dist/cli.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "esbuild src/cli.ts --bundle --platform=node --format=esm --outfile=dist/cli.js",
     "test": "vitest run",
