@@ -7,6 +7,7 @@ export const CLI_LANGUAGES = [
 	"elixir",
 	"go",
 	"haskell",
+	"hcl",
 	"html",
 	"java",
 	"javascript",

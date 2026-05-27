@@ -2,8 +2,21 @@
   "name": "ast-grep-mcp",
   "version": "0.1.0",
   "type": "module",
-  "description": "Standalone ast-grep MCP server for AI-optimized AST code search and replace",
+  "description": "Standalone ast-grep MCP server for AI-optimized AST code search and replace across 26 languages",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/user/ast-grep-mcp"
+  },
+  "keywords": [
+    "ast-grep",
+    "mcp",
+    "code-search",
+    "ast",
+    "code-replace",
+    "ai-tools"
+  ],
+  "author": "",
   "bin": {
     "ast-grep-mcp": "dist/cli.js"
   },
@@ -15,6 +28,7 @@
   },
   "scripts": {
     "build": "esbuild src/cli.ts --bundle --platform=node --format=esm --outfile=dist/cli.js",
+    "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "start": "node dist/cli.js"
   },
@@ -24,6 +38,7 @@
   "devDependencies": {
     "@types/node": "^22.0.0",
     "esbuild": "^0.28.0",
-    "typescript": "^5.7.0"
+    "typescript": "^5.7.0",
+    "vitest": "^4.1.7"
   }
 }

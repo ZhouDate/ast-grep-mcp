@@ -55,6 +55,15 @@ export function detectLanguageSpecificMistake(
     }
   }
 
+  if (lang === "csharp") {
+    if (/^class\s+\$[A-Z_]+\s*$/i.test(src)) {
+      return 'Hint: C# class patterns need a body. Try "class $NAME { $$$ }"'
+    }
+    if (/^(public|private|protected|internal)?\s*(static\s+)?(async\s+)?(void|Task|Task<\$[A-Z_]+>|int|string|bool)\s+\$[A-Z_]+\s*\([^)]*\)\s*$/i.test(src)) {
+      return 'Hint: C# method patterns need a body. Try "void $NAME($$$) { $$$ }"'
+    }
+  }
+
   return null
 }
 

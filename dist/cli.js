@@ -16,6 +16,7 @@ var CLI_LANGUAGES = [
   "elixir",
   "go",
   "haskell",
+  "hcl",
   "html",
   "java",
   "javascript",
@@ -155,6 +156,14 @@ function detectLanguageSpecificMistake(pattern, lang) {
   if (lang === "rust") {
     if (/^fn\s+\$[A-Z_]+\s*$/i.test(src)) {
       return 'Hint: Rust fn patterns need params and body. Try "fn $NAME($$$) { $$$ }"';
+    }
+  }
+  if (lang === "csharp") {
+    if (/^class\s+\$[A-Z_]+\s*$/i.test(src)) {
+      return 'Hint: C# class patterns need a body. Try "class $NAME { $$$ }"';
+    }
+    if (/^(public|private|protected|internal)?\s*(static\s+)?(async\s+)?(void|Task|Task<\$[A-Z_]+>|int|string|bool)\s+\$[A-Z_]+\s*\([^)]*\)\s*$/i.test(src)) {
+      return 'Hint: C# method patterns need a body. Try "void $NAME($$$) { $$$ }"';
     }
   }
   return null;
@@ -562,7 +571,7 @@ function errorMessage(error) {
 
 // src/tool-descriptions.ts
 var AST_GREP_SEARCH_DESCRIPTION = [
-  "Search code by AST structure (25 languages). This is NOT regex.",
+  "Search code by AST structure (26 languages). This is NOT regex.",
   "",
   "Meta-variables (the only wildcards ast-grep understands):",
   "  $VAR       - one AST node (an identifier, expression, statement, ...)",
@@ -588,7 +597,7 @@ var AST_GREP_SEARCH_DESCRIPTION = [
 ].join("\n");
 var AST_GREP_SEARCH_PATTERN_PARAM = "AST pattern - valid, parseable code using $VAR (one node) and $$$ (many nodes). NOT regex: no `|`, no `.*`, no `\\w`, no `[a-z]`. For text or alternation, use grep instead.";
 var AST_GREP_REPLACE_DESCRIPTION = [
-  "Rewrite code by AST pattern (25 languages). Dry-run by default.",
+  "Rewrite code by AST pattern (26 languages). Dry-run by default.",
   "Both pattern and rewrite use AST syntax ($VAR for one node, $$$ for many) - regex does NOT work.",
   "Meta-variables captured in pattern can be reused in rewrite to preserve matched content.",
   'Example: pattern="console.log($MSG)" rewrite="logger.info($MSG)"',
